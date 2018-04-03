@@ -28,7 +28,8 @@ public class Adresse {
     @Column (length = 50)
     @NotNull
     @NotBlank
-    private String typeRue;
+    @Enumerated (EnumType.STRING)
+    private TypeRue typeRue;
 
     @Column (length = 100)
     @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir le nom de la rue")
@@ -39,7 +40,8 @@ public class Adresse {
     private String complement;
 
     @Column (length = 10)
-    private String prefixe;
+    @Enumerated (EnumType.STRING)
+    private Prefixe prefixe;
 
 @OneToMany(mappedBy = "adresse")
 private List<Utilisateur> utilisateurs ;
@@ -49,7 +51,7 @@ private List<Utilisateur> utilisateurs ;
          utilisateurs= new ArrayList<>();
     }
 
-    public Adresse(@NotNull Integer codePostal, String ville, Integer numero, @NotNull @NotBlank String typeRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir le nom de la rue") String nomRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir correctement le complement d'adresse") String complement, String prefixe) {
+    public Adresse(@NotNull Integer codePostal, String ville, Integer numero, @NotNull @NotBlank TypeRue typeRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir le nom de la rue") String nomRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir correctement le complement d'adresse") String complement, Prefixe prefixe) {
         this.codePostal = codePostal;
         this.ville = ville;
         this.numero = numero;
@@ -92,11 +94,11 @@ private List<Utilisateur> utilisateurs ;
         this.numero = numero;
     }
 
-    public String getTypeRue() {
+    public TypeRue getTypeRue() {
         return typeRue;
     }
 
-    public void setTypeRue(String typeRue) {
+    public void setTypeRue(TypeRue typeRue) {
         this.typeRue = typeRue;
     }
 
@@ -116,11 +118,11 @@ private List<Utilisateur> utilisateurs ;
         this.complement = complement;
     }
 
-    public String getPrefixe() {
+    public Prefixe getPrefixe() {
         return prefixe;
     }
 
-    public void setPrefixe(String prefixe) {
+    public void setPrefixe(Prefixe prefixe) {
         this.prefixe = prefixe;
     }
 

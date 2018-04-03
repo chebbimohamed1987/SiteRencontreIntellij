@@ -23,4 +23,8 @@ public class UtilisateurServices {
 
         return  (ArrayList<Utilisateur>) ur.findAll();
     }
+
+    public void create(Utilisateur utilisateur){
+        ur.save(utilisateur);
+    }
 }

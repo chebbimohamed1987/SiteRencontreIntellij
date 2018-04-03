@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <script>
+        submitForms = function() {
 
+                document.getElementById("form1").submit();
+               /* document.getElementById("form2").submit();*/
+
+            return true;
+        }
+
+
+    </script>
 
 </head>
 <body>
 <div>
 
     <h2>Inscription</h2>
-
-
-    <form name="form" th:action="@{/formulaire}" th:object="${utilisateur}"
-          method="post">
-        <div>
-            <p><strong>Utilisateur:</strong></p>
+    <p><strong>Utilisateur:</strong></p>
+    <div>
+        <form id="form1" th:action="@{/formulaire1}" th:object="${utilisateur}"
+              method="post">
 
             <label>Email :</label> <input type="text" id="emailUtilisateur"
                                           th:field="*{emailUtilisateur}">
@@ -60,47 +68,59 @@
             <label>Description :</label> <input type="text" id="description"
                                                 th:field="*{description}"><br>
             <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p><br>
-
-        </div>
-        <div>
-            <p><strong>Adresse:</strong></p>
-
-
-            <label>Code Postal :</label> <input type="number" id="numero"
-                                                th:field="${utilisateur.adresse.numero}">
-            <p th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></p><br>
+            <label>Type: </label> <input type="text" id="type"
+                                              th:field="*{type}">
+            <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p><br>
 
 
+        </form>
+    </div>
+    <div>
+        <p><strong>Adresse:</strong></p>
+
+        <form id="form2" th:action="@{/formulaire2}" th:object="${adresse}"
+              method="post">
+
+            <label>Numero :</label> <input type="number" id="numero"
+                                                th:field="*{numero}">
+            <p th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></p>
+            <br>
+            <label>Prefixe :</label>
+
+            <select name="prefixe" th:field="${adresse.prefixe}">
+                <option th:each="type : ${T(com.formation.siterencontre.entities.Prefixe).values()}" th:name="${type}" th:value="${type}" th:utext="${type}" />
+            </select><br>
+
+            <label>Type rue :</label>
+                <select name="typeRue" th:field="${adresse.typeRue}">
+                    <option th:each="type : ${T(com.formation.siterencontre.entities.TypeRue).values()}" th:name="${type}" th:value="${type}" th:utext="${type}" />
+                </select><br>
+
+            <label>Nom rue :</label> <input type="text" id="nomRue"
+                                          th:field="*{nomRue}"><br>
+            <p th:if="${#fields.hasErrors('nomRue')}" th:errors="*{nomRue}"></p><br>
+            <label>Complément :</label> <input type="text" id="complement"
+                                          th:field="*{complement}"><br>
+            <p th:if="${#fields.hasErrors('complement')}" th:errors="*{complement}"></p><br>
 
             <label>Code Postal :</label>
             <input type="number" id="codePostal"
-                                                th:field="*{utilisateur.adresse.codePostal}">
-            <p th:if="${#fields.hasErrors('codePostal')}" th:errors="*{codePostal}"></p><br>
+                   th:field="*{codePostal}">
+            <p th:if="${#fields.hasErrors('codePostal')}"
+               th:errors="*{codePostal}"></p><br>
 
 
             <label>Ville :</label> <input type="text" id="ville"
                                           th:field="*{ville}"><br>
             <p th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></p><br>
 
+        </form>
 
 
+    </div>
 
+    <input type="submit" value="submit" onclick="submitForms()" />
 
-
-
-       <!--     this.codePostal = codePostal;
-            this.ville = ville;
-            this.numero = numero;
-            this.typeRue = typeRue;
-            this.nomRue = nomRue;
-            this.complement = complement;
-            this.prefixe = prefixe;-->
-
-        </div>
-
-        <input type="submit" value="valider">
-
-    </form>
 
 </div>
 

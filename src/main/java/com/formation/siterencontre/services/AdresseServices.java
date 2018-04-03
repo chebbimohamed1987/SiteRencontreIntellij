@@ -27,4 +27,7 @@ public class AdresseServices {
 
         return  (ArrayList<Adresse>) ar.findAll();
     }
+    public void create(Adresse adresse){
+        ar.save(adresse);
+    }
 }

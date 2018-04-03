@@ -34,9 +34,8 @@ public class Utilisateur {
     @DateTimeFormat
     @NotNull
     private String DateDeNaissance;
-
-    @Enumerated(EnumType.STRING)
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Sexe sexe;
 
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol")

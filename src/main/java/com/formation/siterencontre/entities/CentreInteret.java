@@ -20,8 +20,8 @@ public class CentreInteret {
 
 
 
-  /*  @ManyToMany(mappedBy = "centreInterets")
-    private List<Utilisateur> utilisateurs;*/
+    @ManyToMany(mappedBy = "centreInterets")
+    private List<Utilisateur> utilisateurs;
 
     @ManyToMany (mappedBy = "centreInterets")
     private List<Multimedia> multimedia;

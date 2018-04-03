@@ -5,20 +5,14 @@
     <title>Title</title>
     
  
-
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css" th:href="@{/static/css/index.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
 <div>
     
     <a href="inscription.html"><h2>Inscription</h2></a>
-    
-    <form name="inscription" action="/inscription" method="get">
-        
-        
-        
-        
-        
+    <form th:name="inscription" th:action="@{/getformulaire}" method="get">
+      <input type="submit" value="valider">  
     </form>
     
     
@@ -29,16 +23,7 @@
     
     <p>Mot de passe oublié</p>
     
-    
-    
-    
-    
-    
 </div>
 
-
-
-
-<p>hello</p>
 </body>
 </html>

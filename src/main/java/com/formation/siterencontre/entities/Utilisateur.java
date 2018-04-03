@@ -17,6 +17,7 @@ public class Utilisateur {
     @Pattern(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])", message = "{com.example.demo.entities.Carnet.constraint.Email.message}")
     @Column(length = 100)
     @NotNull
+
     private String emailUtilisateur;
 
     @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre nom")
@@ -76,6 +77,12 @@ public class Utilisateur {
     @ManyToMany
 private List<CentreInteret> centreInterets;
 
+
+    @ManyToMany
+    private List<Utilisateur> favoris;
+
+
+
     public Utilisateur() {
 
     }
@@ -90,6 +97,7 @@ private List<CentreInteret> centreInterets;
         this.pseudo = pseudo;
         this.numeroTel = numeroTel;
         this.type = type;
+
     }
 
     public String getEmailUtilisateur() {
@@ -210,5 +218,13 @@ private List<CentreInteret> centreInterets;
 
     public void setCentreInterets(List<CentreInteret> centreInterets) {
         this.centreInterets = centreInterets;
+    }
+
+    public List<Utilisateur> getFavoris() {
+        return favoris;
+    }
+
+    public void setFavoris(List<Utilisateur> favoris) {
+        this.favoris = favoris;
     }
 }

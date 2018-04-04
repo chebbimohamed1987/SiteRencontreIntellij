@@ -21,11 +21,11 @@ public class UtilisateurServices {
 
     public ArrayList<Utilisateur> getAllUtilisateur(){  return  (ArrayList<Utilisateur>) ur.findAll(); }
 
-    public Utilisateur findById (long id){return  ur.findById(id).get(); }
+    public Utilisateur findById (String id){return  ur.findById(id).get(); }
 
     public void update(Utilisateur utilisateur){ ur.save(utilisateur);  }
 
-    public void delete (long id){   ur.deleteById(id); }
+    public void delete (String id){   ur.deleteById(id); }
 
     public void deletAll (){ ur.deleteAll(); }
 

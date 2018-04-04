@@ -5,8 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<p><strong>Compléter votre profil:</strong></p>
+<!--###################################     PHOTO    ###################################-->
+<div>
+    <label>Photo de profil: </label>
+    <input type="file" th:field="*{photo.lien}" >
+    <span th:if="${#fields.hasErrors('photo.lien')}" th:errors="*{photo.lien}"></span>
+    <br>
+
+</div>
+
 <!--###################################     MULTIMEDIA    ###################################-->
-<p><strong>Multimedia:</strong></p>
+<p><strong>Film:</strong></p>
 <div>
     <label>Titre :</label> <input type="text" id="titre" th:field="*{multimedia.titre}"><br>
     <p th:if="${#fields.hasErrors('multimedia.titre')}" th:errors="*{multimedia.titre}"></p><br>
@@ -21,7 +31,6 @@
     <p th:if="${#fields.hasErrors('multimedia.artiste')}" th:errors="*{multimedia.artiste}"></p><br>
 
 </div>
-
 
 
 </body>

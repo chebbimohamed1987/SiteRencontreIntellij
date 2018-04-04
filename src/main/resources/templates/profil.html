@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+
+</head>
+<body>
+
+
+    <h2>Profil</h2>
+    <!--###################################     UTILISATEUR    ###################################-->
+    <p><strong>Utilisateur:</strong></p>
+    <div>
+        <label th:text="#{utilisateur.emailUtilisateur}"></label> <output type="text" id="emailUtilisateur"  th:field="*{utilisateur.emailUtilisateur}"/>
+
+        <label>Sexe:</label>   <output type="radio" id="${type}" th:name="sexe"th:field="*{utilisateur.sexe}" />
+
+
+
+        <label>Nom:</label> <output type="text" id="nom" th:field="*{utilisateur.nom}"/>
+
+        <label for="prenom">Prenom:</label> <output type="text" id="prenom" th:field="*{utilisateur.prenom}"/>
+
+
+        <label for="pseudo">Pseudo:</label> <output type="text" id="pseudo" th:field="*{utilisateur.pseudo}"/>
+
+        <label for="motDePasse">Mot de passe :</label> <output type="password" id="motDePasse" th:field="*{utilisateur.motDePasse}"/>
+
+
+        <label>Date de naissance:</label> <output type="date" id="dateDeNaissance" th:field="*{utilisateur.dateDeNaissance}"/>
+
+        <label>Telephone: </label> <output type="text" id="numeroTel" th:field="*{utilisateur.numeroTel}"/>
+
+
+        <label>Description :</label> <output type="text" id="description" th:field="*{utilisateur.description}"/>
+
+        <label>Type: </label> <output type="text" id="type" th:field="*{utilisateur.type}"/>
+
+    </div>
+
+    <!--###################################     ADRESSE    ###################################-->
+    <p><strong>Adresse:</strong></p>
+    <div>
+        <label>Numero :</label> <output type="number" id="numero" th:field="*{adresse.numero}"/>
+
+        <label>Prefixe :</label><output name="prefixe" th:field="${adresse.prefixe}"/>
+
+
+        <label>Type rue :</label>  <output name="typeRue" th:field="${adresse.typeRue}"/>
+            
+
+
+        <label>Nom rue :</label> <output type="text" id="nomRue" th:field="*{adresse.nomRue}"/>
+
+        <label>Complément :</label> <output type="text" id="complement" th:field="*{adresse.complement}"/>
+
+        <label>Code Postal :</label> <output type="number" id="codePostal" th:field="*{adresse.codePostal}"/>
+
+        <label>Ville :</label> <output type="text" id="ville" th:field="*{adresse.ville}"/>
+    </div>
+    <!--###################################     APPARENCE    ###################################-->
+    <p><strong>Apparence:</strong></p>
+    <div>
+        <label>Masse :</label> <output type="number" id="masse" th:field="*{apparence.masse}"/>
+
+        <label>Taille :</label> <output type="number" id="taille" th:field="*{apparence.taille}"/>
+
+        <label>Couleur yeux :</label>
+        <output name="couleurYeux" th:field="${apparence.couleurYeux}"/>
+
+
+        <label>Couleur cheveux :</label>
+        <output name="couleurCheveux" th:field="${apparence.couleurCheveux}"/>
+
+        <label>Type cheveux :</label> <output name="typeCheveux" th:field="${apparence.typeCheveux}"/>
+
+        <label>Origine :</label> <output type="text" id="origine" th:field="*{apparence.origine}"/><br>
+
+    </div>
+    <!--###################################     CENTRE D INTERETS    ###################################-->
+    <p><strong>Centre d'interets:</strong></p>
+    <div>
+        <label>Sport :</label> <output type="text" id="sport" th:field="*{centreInterets.sport}"/>
+
+
+        <label>Loisir :</label><output type="text" id="loisir" th:field="*{centreInterets.loisir}"/>
+
+    </div>
+
+    <!--###################################     SITUATION    ###################################-->
+
+    <p><strong>Situation:</strong></p>
+    <div>
+        <label>Statut personnel :</label> <output type="text" id="statutPerso" th:field="*{situation.statutPerso}"/>
+
+        <label>Statut professionnel :</label> <output type="text" id="statutPro" th:field="*{situation.statutPro}"/>
+
+
+        <label>Nombre d'enfants :</label> <output type="number" id="nbrEnfant" th:field="*{situation.nbrEnfant}"/>
+
+        <label>Fumeur :</label>
+        <output name="sport" th:field="${situation.fumeur}" />
+
+
+        <label>Alcool :</label>
+        <output name="loisir" th:field="${situation.alcool}" />
+
+
+        <label>Orientation :</label>
+        <output name="loisir" th:field="${situation.orientation}" />
+
+    </div>
+
+
+
+</body>
+</html>

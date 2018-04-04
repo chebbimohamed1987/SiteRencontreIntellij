@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
-    <!-- <script>
-         submitForms = function() {
-                 document.getElementById("form1").submit();
-                 document.getElementById("form2").submit();
-             return true;  } </script>-->
 
 </head>
 <body>
@@ -20,51 +15,48 @@
     <!--###################################     UTILISATEUR    ###################################-->
     <p><strong>Utilisateur:</strong></p>
     <div>
-        <!--<label th:for="emailUtilisateur" th:text="#{utilisateur.emailUtilisateur}"></label>-->
-
-
-        <label>Email:</label><input type="text" id="emailUtilisateur" th:field="*{utilisateur.emailUtilisateur}">
-        <p th:if="${#fields.hasErrors('utilisateur.emailUtilisateur')}" th:errors="*{utilisateur.emailUtilisateur}"></p><br>
+        <label th:for="emailUtilisateur" th:text="#{utilisateur.emailUtilisateur}"></label> <input type="text" id="emailUtilisateur"  th:field="*{utilisateur.emailUtilisateur}">
+        <span th:if="${#fields.hasErrors('utilisateur.emailUtilisateur')}" th:errors="*{utilisateur.emailUtilisateur}"></span><br>
 
         <label>Sexe:</label>
         <input th:each="type : ${T(com.formation.siterencontre.enums.Sexe).values()}" type="radio" id="${type}" th:name="sexe"th:field="*{utilisateur.sexe}" th:value="${type}"th:utext="${type}"/>
-        <p th:if="${#fields.hasErrors('utilisateur.sexe')}" th:errors="*{utilisateur.sexe}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.sexe')}" th:errors="*{utilisateur.sexe}"></span><br>
 
 
 
         <label>Nom:</label> <input type="text" id="nom" th:field="*{utilisateur.nom}">
-        <p th:if="${#fields.hasErrors('utilisateur.nom')}" th:errors="*{utilisateur.nom}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.nom')}" th:errors="*{utilisateur.nom}"></span><br>
 
         <label for="prenom">Prenom:</label> <input type="text" id="prenom" th:field="*{utilisateur.prenom}">
-        <p th:if="${#fields.hasErrors('utilisateur.prenom')}" th:errors="*{utilisateur.prenom}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.prenom')}" th:errors="*{utilisateur.prenom}"></span><br>
 
 
         <label for="pseudo">Pseudo:</label> <input type="text" id="pseudo" th:field="*{utilisateur.pseudo}">
-        <p th:if="${#fields.hasErrors('utilisateur.pseudo')}" th:errors="*{utilisateur.pseudo}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.pseudo')}" th:errors="*{utilisateur.pseudo}"></span><br>
 
         <label for="motDePasse">Mot de passe :</label> <input type="password" id="motDePasse" th:field="*{utilisateur.motDePasse}">
-        <p th:if="${#fields.hasErrors('utilisateur.motDePasse')}" th:errors="*{utilisateur.motDePasse}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.motDePasse')}" th:errors="*{utilisateur.motDePasse}"></span><br>
 
 
         <label>Date de naissance:</label> <input type="date" id="dateDeNaissance" th:field="*{utilisateur.dateDeNaissance}">
-        <p th:if="${#fields.hasErrors('utilisateur.dateDeNaissance')}" th:errors="*{utilisateur.dateDeNaissance}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.dateDeNaissance')}" th:errors="*{utilisateur.dateDeNaissance}"></span><br>
 
         <label>Telephone: </label> <input type="text" id="numeroTel" th:field="*{utilisateur.numeroTel}">
-        <p th:if="${#fields.hasErrors('utilisateur.numeroTel')}" th:errors="*{utilisateur.numeroTel}"></p><br>
+        <span th:if="${#fields.hasErrors('utilisateur.numeroTel')}" th:errors="*{utilisateur.numeroTel}"></span><br>
 
 
-        <label>Description :</label> <input type="text" id="description" th:field="*{utilisateur.description}"><br>
-        <p th:if="${#fields.hasErrors('utilisateur.description')}" th:errors="*{utilisateur.description}"></p><br>
+        <label>Description :</label> <input type="text" id="description" th:field="*{utilisateur.description}">
+        <span th:if="${#fields.hasErrors('utilisateur.description')}" th:errors="*{utilisateur.description}"></span><br>
 
         <label>Type: </label> <input type="text" id="type" th:field="*{utilisateur.type}">
-        <p th:if="${#fields.hasErrors('utilisateur.type')}" th:errors="*{utilisateur.type}"></p>
+        <span th:if="${#fields.hasErrors('utilisateur.type')}" th:errors="*{utilisateur.type}"></span>
     </div>
 
     <!--###################################     ADRESSE    ###################################-->
     <p><strong>Adresse:</strong></p>
     <div>
         <label>Numero :</label> <input type="number" id="numero" th:field="*{adresse.numero}">
-        <p th:if="${#fields.hasErrors('adresse.numero')}" th:errors="*{adresse.numero}"></p><br>
+        <span th:if="${#fields.hasErrors('adresse.numero')}" th:errors="*{adresse.numero}"></span><br>
 
         <label>Prefixe :</label>
         <select name="prefixe" th:field="${adresse.prefixe}">
@@ -78,26 +70,26 @@
             <option th:each="type:${T(com.formation.siterencontre.enums.TypeRue).values()}" th:name="${type}" th:value="${type}" th:utext="${type}"/>
         </select><br>
 
-        <label>Nom rue :</label> <input type="text" id="nomRue" th:field="*{adresse.nomRue}"><br>
-        <p th:if="${#fields.hasErrors('adresse.nomRue')}" th:errors="*{adresse.nomRue}"></p><br>
+        <label>Nom rue :</label> <input type="text" id="nomRue" th:field="*{adresse.nomRue}">
+        <span th:if="${#fields.hasErrors('adresse.nomRue')}" th:errors="*{adresse.nomRue}"></span><br>
 
-        <label>Complément :</label> <input type="text" id="complement" th:field="*{adresse.complement}"><br>
-        <p th:if="${#fields.hasErrors('adresse.complement')}" th:errors="*{adresse.complement}"></p><br>
+        <label>Complément :</label> <input type="text" id="complement" th:field="*{adresse.complement}">
+        <span th:if="${#fields.hasErrors('adresse.complement')}" th:errors="*{adresse.complement}"></span><br>
 
-        <label>Code Postal :</label> <input type="number" id="codePostal" th:field="*{adresse.codePostal}"><br>
-        <p th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="*{adresse.codePostal}"></p><br>
+        <label>Code Postal :</label> <input type="number" id="codePostal" th:field="*{adresse.codePostal}">
+        <span th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="*{adresse.codePostal}"></span><br>
 
-        <label>Ville :</label> <input type="text" id="ville" th:field="*{adresse.ville}"><br>
-        <p th:if="${#fields.hasErrors('adresse.ville')}" th:errors="*{adresse.ville}"></p><br>
+        <label>Ville :</label> <input type="text" id="ville" th:field="*{adresse.ville}">
+        <span th:if="${#fields.hasErrors('adresse.ville')}" th:errors="*{adresse.ville}"></span><br>
     </div>
     <!--###################################     APPARENCE    ###################################-->
     <p><strong>Apparence:</strong></p>
     <div>
         <label>Masse :</label> <input type="number" id="masse" th:field="*{apparence.masse}">
-        <p th:if="${#fields.hasErrors('apparence.masse')}" th:errors="*{apparence.masse}"></p><br>
+        <span th:if="${#fields.hasErrors('apparence.masse')}" th:errors="*{apparence.masse}"></span><br>
 
         <label>Taille :</label> <input type="number" id="taille" th:field="*{apparence.taille}">
-        <p th:if="${#fields.hasErrors('apparence.taille')}" th:errors="*{apparence.taille}"></p><br>
+        <span th:if="${#fields.hasErrors('apparence.taille')}" th:errors="*{apparence.taille}"></span><br>
 
         <label>Couleur yeux :</label>
         <select name="couleurYeux" th:field="${apparence.couleurYeux}">
@@ -118,22 +110,22 @@
         </select><br>
 
         <label>Origine :</label> <input type="text" id="origine" th:field="*{apparence.origine}"><br>
-        <p th:if="${#fields.hasErrors('apparence.origine')}" th:errors="*{apparence.origine}"></p><br>
+        <span th:if="${#fields.hasErrors('apparence.origine')}" th:errors="*{apparence.origine}"></span>
 
     </div>
     <!--###################################     CENTRE D INTERETS    ###################################-->
     <p><strong>Centre d'interets:</strong></p>
     <div>
-        <label>Sport :</label> <input type="text" id="sport" th:field="*{centreInterets.sport}"><br>
-        <p th:if="${#fields.hasErrors('centreInterets.sport')}" th:errors="*{centreInterets.sport}"></p><br>
+        <label>Sport :</label> <input type="text" id="sport" th:field="*{centreInterets.sport}">
+        <span th:if="${#fields.hasErrors('centreInterets.sport')}" th:errors="*{centreInterets.sport}"></span><br>
 
         <!--<select name="sport" th:field="${centreInterets.sport}"  th:size="4" >
             
             <option th:each="type : ${T(com.formation.siterencontre.enums.Sport).values()}" th:name="${type}" th:value="${type}" th:utext="${type}"/>
         </select><br>-->
 
-        <label>Loisir :</label><input type="text" id="loisir" th:field="*{centreInterets.loisir}"><br>
-        <p th:if="${#fields.hasErrors('centreInterets.loisir')}" th:errors="*{centreInterets.loisir}"></p><br>
+        <label>Loisir :</label><input type="text" id="loisir" th:field="*{centreInterets.loisir}">
+        <span th:if="${#fields.hasErrors('centreInterets.loisir')}" th:errors="*{centreInterets.loisir}"></span><br>
 
        <!-- <select name="loisir" th:field="${centreInterets.loisir}" th:size="4">
             
@@ -145,15 +137,15 @@
 
     <p><strong>Situation:</strong></p>
     <div>
-        <label>Statut personnel :</label> <input type="text" id="statutPerso" th:field="*{situation.statutPerso}"><br>
-        <p th:if="${#fields.hasErrors('situation.statutPerso')}" th:errors="*{situation.statutPerso}"></p><br>
+        <label>Statut personnel :</label> <input type="text" id="statutPerso" th:field="*{situation.statutPerso}">
+        <span th:if="${#fields.hasErrors('situation.statutPerso')}" th:errors="*{situation.statutPerso}"></span><br>
 
-        <label>Statut professionnel :</label> <input type="text" id="statutPro" th:field="*{situation.statutPro}"><br>
-        <p th:if="${#fields.hasErrors('situation.statutPro')}" th:errors="*{situation.statutPro}"></p><br>
+        <label>Statut professionnel :</label> <input type="text" id="statutPro" th:field="*{situation.statutPro}">
+        <span th:if="${#fields.hasErrors('situation.statutPro')}" th:errors="*{situation.statutPro}"></span><br>
 
 
         <label>Nombre d'enfants :</label> <input type="number" id="nbrEnfant" th:field="*{situation.nbrEnfant}">
-        <p th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></p><br>
+        <span th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></span><br>
 
         <label>Fumeur :</label>
         <select name="sport" th:field="${situation.fumeur}"   >
@@ -169,9 +161,12 @@
 
         <label>Orientation :</label>
         <select name="loisir" th:field="${situation.orientation}" >
-            
+
             <option th:each="type : ${T(com.formation.siterencontre.enums.Orientation).values()}" th:name="${type}" th:value="${type}" th:utext="${type}"/>
         </select><br>
+
+
+
     </div>
     <input type="submit" value="submit" />
 

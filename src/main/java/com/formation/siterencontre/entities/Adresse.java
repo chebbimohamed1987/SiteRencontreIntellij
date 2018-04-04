@@ -43,7 +43,7 @@ public class Adresse {
     @Enumerated (EnumType.STRING)
     private Prefixe prefixe;
 
-@OneToMany(mappedBy = "adresse")
+@OneToMany(mappedBy = "adresse", cascade = {CascadeType.ALL})
 private List<Utilisateur> utilisateurs ;
 
 

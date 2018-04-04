@@ -3,7 +3,12 @@ label {
     display: inline-block;
 }
 
+span{
 
+    color:red;
+    font-weight: bold;
+    margin-left: 20px;
+}
 
 body{
     background: #7dff09;

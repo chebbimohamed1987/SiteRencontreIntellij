@@ -1,19 +1,20 @@
 package com.formation.siterencontre.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.formation.siterencontre.enums.Sexe;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Utilisateur {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Pattern(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])", message = "{com.example.demo.entities.Carnet.constraint.Email.message}")
     @Column(length = 100)
     @NotNull
@@ -21,13 +22,12 @@ public class Utilisateur {
     private String emailUtilisateur;
 
     @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre nom")
-    @NotNull
-    @NotBlank
+   /* @NotNull
+    @NotBlank*/
     private String nom;
-
+  /*  @NotNull
+    @NotBlank*/
     @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre prenom")
-    @NotNull
-    @NotBlank
     private String prenom;
 
     @Column(name = "DateDeNaissance")
@@ -38,7 +38,7 @@ public class Utilisateur {
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
 
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol")
+    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol")
     @Column(name = "MotDePasse" ,length=50)
     private String motDePasse;
 
@@ -84,9 +84,12 @@ private List<CentreInteret> centreInterets;
 
     public Utilisateur() {
 
+          photos = new ArrayList<>();
+        centreInterets=new ArrayList<>();
     }
 
-    public Utilisateur(@Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre nom") @NotNull @NotBlank String nom, @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre prenom") @NotNull @NotBlank String prenom, @NotNull String dateDeNaissance, @NotNull Sexe sexe, @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol") String motDePasse, String description, @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre prenom") String pseudo, @Pattern(regexp = "^[a-z0-9_-]{3,15}$", message = "Veuillez saisir votre numero de telephone") String numeroTel, Integer type) {
+    public Utilisateur(String emailUtilisateur, String nom,  String prenom,  String dateDeNaissance,  Sexe sexe,  String motDePasse, String description, String pseudo,  String numeroTel, Integer type) {
+        this.emailUtilisateur=emailUtilisateur;
         this.nom = nom;
         this.prenom = prenom;
         DateDeNaissance = dateDeNaissance;
@@ -96,6 +99,8 @@ private List<CentreInteret> centreInterets;
         this.pseudo = pseudo;
         this.numeroTel = numeroTel;
         this.type = type;
+        photos = new ArrayList<>();
+        centreInterets=new ArrayList<>();
 
     }
 

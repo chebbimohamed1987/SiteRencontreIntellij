@@ -1,13 +1,15 @@
-package com.formation.siterencontre.entities;
+package com.formation.siterencontre.enums;
 
-public enum Prefixe {
+public enum Orientation {
 
 
-    Bis ("Bis"), Ter ("Ter");
+    hetero("Heterosexuel(le)"),
+    homo("Homosexuel(le)"),
+    bisexuel("Bisexuel(le)");
 
         private String nom;
 
-        private Prefixe(String nom) {
+        private Orientation(String nom) {
             this.nom = nom;
         }
 

@@ -1,7 +1,22 @@
 label {
-    width:100px;
+    width:150px;
     display: inline-block;
 }
+
+
+
+body{
+    background: #7dff09;
+}
+
+div{
+
+    border: 2px solid #5268ff;
+    
+    background: #21ffd5;
+}
+
+
 
 
 

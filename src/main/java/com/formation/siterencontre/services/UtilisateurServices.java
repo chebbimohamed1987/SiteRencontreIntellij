@@ -17,14 +17,23 @@ public class UtilisateurServices {
         this.ur = ur;
     }
 
+    public void create(Utilisateur utilisateur){ ur.save(utilisateur);   }
 
+    public ArrayList<Utilisateur> getAllUtilisateur(){  return  (ArrayList<Utilisateur>) ur.findAll(); }
 
-    public ArrayList<Utilisateur> getAllUtilisateur(){
+    public Utilisateur findById (long id){return  ur.findById(id).get(); }
 
-        return  (ArrayList<Utilisateur>) ur.findAll();
-    }
+    public void update(Utilisateur utilisateur){ ur.save(utilisateur);  }
 
-    public void create(Utilisateur utilisateur){
-        ur.save(utilisateur);
+    public void delete (long id){   ur.deleteById(id); }
+
+    public void deletAll (){ ur.deleteAll(); }
+
+    public long taille(){
+        return ur.count();
     }
 }
+
+
+
+

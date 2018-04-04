@@ -1,4 +1,4 @@
-package com.formation.siterencontre.entities;
+package com.formation.siterencontre.enums;
 
 public enum Sexe {
 

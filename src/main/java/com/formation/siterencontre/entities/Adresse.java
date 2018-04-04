@@ -1,7 +1,8 @@
 package com.formation.siterencontre.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.formation.siterencontre.enums.Prefixe;
+import com.formation.siterencontre.enums.TypeRue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,17 +18,16 @@ public class Adresse {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+
     @Column (length = 5)
     private Integer codePostal;
-    @Column (length = 100)
 
+    @Column (length = 100)
     private String ville;
 
     private Integer numero;
     @Column (length = 50)
     @NotNull
-    @NotBlank
     @Enumerated (EnumType.STRING)
     private TypeRue typeRue;
 
@@ -51,7 +51,7 @@ private List<Utilisateur> utilisateurs ;
          utilisateurs= new ArrayList<>();
     }
 
-    public Adresse(@NotNull Integer codePostal, String ville, Integer numero, @NotNull @NotBlank TypeRue typeRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir le nom de la rue") String nomRue, @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Veuillez saisir correctement le complement d'adresse") String complement, Prefixe prefixe) {
+    public Adresse( Integer codePostal, String ville, Integer numero,  TypeRue typeRue,  String nomRue, String complement, Prefixe prefixe) {
         this.codePostal = codePostal;
         this.ville = ville;
         this.numero = numero;

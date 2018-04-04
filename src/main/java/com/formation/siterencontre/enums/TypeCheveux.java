@@ -1,13 +1,17 @@
-package com.formation.siterencontre.entities;
+package com.formation.siterencontre.enums;
 
-public enum TypeRue {
+public enum TypeCheveux {
 
 
-    Boulevard ("Boulevard"), Avenue ("Avenue"), Rue("Rue");
+    Chauve("Chauve"),
+    Boucle("Bouclé"),
+    Court("Court"),
+    Milong("Milong"),
+    Long("Long");
 
         private String nom;
 
-        private TypeRue(String nom) {
+        private TypeCheveux(String nom) {
             this.nom = nom;
         }
 

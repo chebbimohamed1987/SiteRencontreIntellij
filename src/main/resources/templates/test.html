@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org("
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8("
     <title>Title</title>
-    <th:block th:replace="fragments/header"> </th:block>
+    <th:block th:replace="fragments/header(" </th:block>
 
 </head>
 <body>
 
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://192.168.22.110:8080/inscription -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8("
+
+    <title>Inscription</title>
+</head>
+<body>
+
+    <fieldset id="localisation("
+        <legend>Adresse</legend>
+        <input type="number" placeholder="Numero de rue" id="adresse.numero" name="adresse.numero" value="("
+        <br>
+        <!-- 				<input type="text" th:field="*{adresse.typeRue}" placeholder="Type de rue(" -->
+        <select name="adresse.typeRue("
+
+
+
+            ("Couleur des cheveux :"),
+            noir("Noirs"),
+            brun("Bruns"),
+            roux("Roux"),
+            chatain("Chatains"),
+            blond("Blonds"),
+            blanc("Gris/Blanc"),
+       			<input type="text" th:field="*{apparence.typeCheveux}" placeholder="Type de cheveux(" -->
+        <select id="apparence.typeCheveux" name="apparence.typeCheveux("
+            chauve("Chauve"),
+            court("Court"),
+            milong("Mi longs"),
+            long("Longs"),
+
+            ("Tabac :"),
+            jamais("Jamais"),
+            occasionnellement("Occasionnellement"),
+            regulierement("Régulièrement"),
+
+            ("Alcool :"),
+            jamais("Jamais"),
+            occasionnellement("Occasionnellement"),
+            regulierement("Régulièrement"),
+
+            hetero("Heterosexuel(le)"),
+            homo("Homosexuel(le)"),
+            bisexuel("Bisexuel(le)"),
+        </select>
+        <br>
+    </fieldset>
+
+
+
+
+
+    <input type="submit" value="Valider l&#39;inscription("
+
+</form>
+
+
+</body></html>
 </body>
 </html>

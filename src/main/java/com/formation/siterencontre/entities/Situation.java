@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class Situation {
     @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez choisir votre situation personnelle")
     private String statutPerso;
     @NotNull
-    @NotBlank
+
     private Integer nbrEnfant;
     private String orientation;
     private String fumeur;
@@ -35,6 +36,7 @@ public class Situation {
 
 
     public Situation() {
+        utilisateurs= new ArrayList<>();
     }
 
     public Situation(@NotNull @NotBlank @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre situation professionnelle") String statutPro, @NotNull @NotBlank @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez choisir votre situation personnelle") String statutPerso, @NotNull @NotBlank Integer nbrEnfant, String orientation, String fumeur, String alcool) {
@@ -44,6 +46,7 @@ public class Situation {
         this.orientation = orientation;
         this.fumeur = fumeur;
         this.alcool = alcool;
+        utilisateurs= new ArrayList<>();
     }
 
     public Long getId() {

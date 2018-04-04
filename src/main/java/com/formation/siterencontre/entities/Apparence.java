@@ -14,22 +14,21 @@ public class Apparence {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
-    @NotBlank
+
     private Integer taille;
     @NotNull
-    @NotBlank
+
     private String couleurYeux;
     @NotNull
     @NotBlank
-    private String orgine;
+    private String origine;
     @NotNull
-    @NotBlank
+
     private String couleurCheveux;
     @NotNull
-    @NotBlank
+
     private String typeCheveux;
     @NotNull
-    @NotBlank
     private float masse;
 
     @OneToMany(mappedBy = "apparence")
@@ -38,10 +37,10 @@ public class Apparence {
     public Apparence() {
     }
 
-    public Apparence(@NotNull @NotBlank Integer taille, @NotNull @NotBlank String couleurYeux, @NotNull @NotBlank String orgine, @NotNull @NotBlank String couleurCheveux, @NotNull @NotBlank String typeCheveux, @NotNull @NotBlank float masse) {
+    public Apparence(@NotNull @NotBlank Integer taille, @NotNull @NotBlank String couleurYeux, @NotNull @NotBlank String origine, @NotNull @NotBlank String couleurCheveux, @NotNull @NotBlank String typeCheveux, @NotNull @NotBlank float masse) {
         this.taille = taille;
         this.couleurYeux = couleurYeux;
-        this.orgine = orgine;
+        this.origine = origine;
         this.couleurCheveux = couleurCheveux;
         this.typeCheveux = typeCheveux;
         this.masse = masse;
@@ -71,12 +70,12 @@ public class Apparence {
         this.couleurYeux = couleurYeux;
     }
 
-    public String getOrgine() {
-        return orgine;
+    public String getOrigine() {
+        return origine;
     }
 
-    public void setOrgine(String orgine) {
-        this.orgine = orgine;
+    public void setOrigine(String origine) {
+        this.origine = origine;
     }
 
     public String getCouleurCheveux() {

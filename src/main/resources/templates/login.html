@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+</head>
+<body>
+
+<br><br><br><br><br><br><br><br><br>
+
+<output th:text="${utilisateur.emailUtilisateur}">
+    <br>
+</output> <output type="text" id="message"  th:text="${message}"/>
+<br>
+<h2>votre compte</h2>
+<form th:name="compte" th:action="@{|/getprofil/${utilisateur.emailUtilisateur}|}" method="get">
+    <input type="submit" value="Compte">
+</form>
+
+
+
+
+<!--<h1 th:text="#{hello}"></h1>-->
+</body>
+</html>

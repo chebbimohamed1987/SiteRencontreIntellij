@@ -32,6 +32,17 @@ public class UtilisateurServices {
     public long taille(){
         return ur.count();
     }
+
+
+   public  Utilisateur findUtilisateurByEmail(String EmailUtilisateur){
+
+        return ur.findUtilisateurByEmailUtilisateur (EmailUtilisateur);
+    }
+
+    public  Utilisateur findUtilisateurByEmailUtilisateurEtMotDePasse(String EmailUtilisateur,String motDePasse ){
+    return ur.findUtilisateurByEmailUtilisateurAndMotDePasse(EmailUtilisateur, motDePasse);
+
+    }
 }
 
 

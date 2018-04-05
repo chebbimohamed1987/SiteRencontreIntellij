@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+ 
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+</head>
+<body>
+<div>
+    
+    <a href=""><h2>Connexion</h2></a>
+    <form th:name="connexion" th:action="@{/connexion}" method="POST">
+
+        <label >Identifiant</label><input type="email" id="email" name="email"   >
+        <!--<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br>-->
+
+        <label >Mot de passe :</label> <input type="password" id="motDePasse" name="motDePasse" >
+        <!--<span th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}"></span><br>-->
+
+
+        <input type="submit" value="Se connecter">
+    </form>
+    
+</div>
+
+</body>
+</html>

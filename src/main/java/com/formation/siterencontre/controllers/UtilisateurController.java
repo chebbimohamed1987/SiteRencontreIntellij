@@ -8,12 +8,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 import org.springframework.validation.BindingResult;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 
 import org.springframework.web.bind.annotation.*;
 
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDateTime;
 
 
 @Controller
@@ -37,29 +43,24 @@ public class UtilisateurController {
 
     @PostMapping("/formulaire")
     private String formulaire(@Valid @ModelAttribute(value="utilisateur") Utilisateur utilisateur, BindingResult resultUtilisateur,
-                               @Valid @ModelAttribute(value="adresse") Adresse adresse, BindingResult resultAdresse,
-                               @Valid @ModelAttribute(value="apparence") Apparence apparence, BindingResult resultApparence,
-                               @Valid @ModelAttribute(value="centreInterets") CentreInteret centreInterets, BindingResult resultCentreInterets,
-                               @Valid @ModelAttribute(value="situation")  Situation situation, BindingResult resultSituation,
-                              @Valid @ModelAttribute(value="photo")  Photo photo, BindingResult resultPhoto,
-                              ModelMap model
+                                    @Valid @ModelAttribute(value="adresse") Adresse adresse, BindingResult resultAdresse,
+                                    @Valid @ModelAttribute(value="apparence") Apparence apparence, BindingResult resultApparence,
+                                    @Valid @ModelAttribute(value="centreInterets") CentreInteret centreInterets, BindingResult resultCentreInterets,
+                                    @Valid @ModelAttribute(value="situation")  Situation situation, BindingResult resultSituation,
+                                    @Valid @ModelAttribute(value="photo")  Photo photo, BindingResult resultPhoto,
+                                    ModelMap model
                                ) {
 
         if (resultUtilisateur.hasErrors() || resultAdresse.hasErrors() ||
                 resultApparence.hasErrors() || resultCentreInterets.hasErrors() ||
                 resultSituation.hasErrors()||resultPhoto.hasErrors() ) {
 
-            return "inscription";
+            return  "inscription";
         }
 
-
-
         utilisateur.setAdresse(adresse);
-
         utilisateur.setApparence(apparence);
-
         utilisateur.getCentreInterets().add(centreInterets);
-
         utilisateur.setSituation(situation);
         /*utilisateur.getPhotos().add(photo);*/
         as.create(adresse);
@@ -68,18 +69,10 @@ public class UtilisateurController {
         ss.create(situation);
         us.create(utilisateur);
      /*ps.create(photo);*/
-ModelMap model2= new ModelMap();
-        model2.addAttribute("adresse", adresse);
-        model2.addAttribute("utilisateur", utilisateur);
-        model2.addAttribute("apparence", apparence);
-        model2.addAttribute("centreInterets", centreInterets);
-        model2.addAttribute("situation", situation);
-
 
         return "profil";
 
     }
-
 
 
     @RequestMapping(value = "/getformulaire", method = RequestMethod.GET)
@@ -92,25 +85,84 @@ ModelMap model2= new ModelMap();
         model.addAttribute("situation", new Situation());
      /*   model.addAttribute("photo", new Photo());*/
         return "inscription";
+    }
+
+    @RequestMapping(value = "/getprofil/{Email}", method = RequestMethod.GET)
+    public ModelAndView getProfil (@PathVariable String Email ){
+        Utilisateur utilisateur = us.findUtilisateurByEmail(Email);
+ ModelAndView model=new ModelAndView("profil");
+        model.addObject("utilisateur", utilisateur);
+        model.addObject("adresse", utilisateur.getAdresse());
+        model.addObject("apparence", utilisateur.getApparence());
+       model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
+        model.addObject("situation", utilisateur.getSituation());
+
+
+
+     /*   Adresse adresse= as.findById(1L);
+        Apparence apparence = aps.findById(2L);
+        CentreInteret centreInterets = cs.findById(3L);
+        Situation situation=ss.findById(4L);
+
+
+
+        session.setAttribute("utilisateur", utilisateur);
+
+       session.setAttribute("adresse", adresse);
+        session.setAttribute("apparence", apparence);
+        session.setAttribute("centreInterets", centreInterets);
+        session.setAttribute("situation", situation);*/
+
+
+        return model;
+    }
+
+
+
+    @GetMapping("/getconnexion")
+    public String getConexion() {
+
+        return "connexion";}
+
+
+
+
+    @RequestMapping(value = "/connexion", method = RequestMethod.POST)
+    private String connexion( @RequestParam("email") String email,@RequestParam ("motDePasse") String motDePasse, ModelMap model, HttpSession httpSession){
+
+        Utilisateur utilisateur = us.findUtilisateurByEmailUtilisateurEtMotDePasse(email, motDePasse);
+        if ( utilisateur == null) {
+            String message = "identifiant ou mot de passe incorrect";
+
+            model.addAttribute("message", message);
+            return "connexion";
+
+        }
+
+this.session(httpSession, utilisateur);
+        String message = "Bienvenue sur votre session";
+        model.addAttribute("message", message);
+        model.addAttribute("utilisateur", utilisateur);
+
+        return "login";
 
     }
 
-    @RequestMapping(value = "/getprofil", method = RequestMethod.GET)
-    public String getProfil (ModelMap model2){
 
-        Adresse adresse= as.findById(1L);
-        Apparence apparence = aps.findById(1L);
-        CentreInteret centreInterets = cs.findById(1L);
-        Situation situation=ss.findById(1L);
-        Utilisateur utilisateur = us.findById("chebbimohamed@live.fr");
-        
-        model2.addAttribute("adresse", adresse);
-        model2.addAttribute("utilisateur", utilisateur);
-        model2.addAttribute("apparence", apparence);
-        model2.addAttribute("centreInterets", centreInterets);
-        model2.addAttribute("situation", situation);
-        return "profil";
-    }
+        public void session(HttpSession httpsession, Utilisateur utilisateur){
+
+            String  sessionKey="dating";
+            Object time= httpsession.getAttribute(sessionKey);
+
+            if (time==null){
+                time=LocalDateTime.now();
+                httpsession.setAttribute(sessionKey, time);
+            }
+            httpsession.setAttribute("EmailUtilisateur", utilisateur.getEmailUtilisateur());
+            httpsession.setAttribute("pseudo",utilisateur.getPseudo() );
+            httpsession.setMaxInactiveInterval(60*15);
+
+        }
 
 
 }

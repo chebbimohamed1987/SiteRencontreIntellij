@@ -2,7 +2,10 @@ package com.formation.siterencontre.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.formation.siterencontre.enums.Sexe;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    
- 
+
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
 <div>
-    
+
     <a href=""><h2>Inscription</h2></a>
     <form th:name="inscription" th:action="@{/getformulaire}" method="get">
       <input type="submit" value="S'inscrire">
     </form>
-    
+
 </div>
 <div>
 
 
     <a href=""><h2>Connexion</h2></a>
-    <form th:name="connexion" th:action="@{/getformulaire}" method="get">
+    <form th:name="connexion" th:action="@{/getconnexion}" method="get">
         <input type="submit" value="Se connecter">
     </form>
+
     <a href=""><p>Mot de passe oublié</p></a>
 
 

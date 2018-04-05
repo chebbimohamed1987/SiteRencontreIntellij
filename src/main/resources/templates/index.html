@@ -10,7 +10,7 @@
 <body>
 <div>
 
-    <a href=""><h2>Inscription</h2></a>
+    <h2>Inscription</h2>
     <form th:name="inscription" th:action="@{/getformulaire}" method="get">
       <input type="submit" value="S'inscrire">
     </form>
@@ -19,12 +19,24 @@
 <div>
 
 
-    <a href=""><h2>Connexion</h2></a>
+    <h2>Connexion</h2>
     <form th:name="connexion" th:action="@{/getconnexion}" method="get">
         <input type="submit" value="Se connecter">
     </form>
 
     <a href=""><p>Mot de passe oublié</p></a>
+
+
+</div>
+
+<div>
+
+
+    <h2>Deconnexion</h2>
+    <form th:name="deconnexion" th:action="@{/deconnexion}" method="get">
+        <input type="submit" value="Se déconnecter">
+    </form>
+
 
 
 </div>

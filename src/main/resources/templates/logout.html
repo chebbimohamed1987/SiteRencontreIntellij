@@ -8,14 +8,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
-<output th:text="${utilisateur.emailUtilisateur}"></output>
+
     <br>
 <br><h2><span th:text="${message != null} ? ${message} : ''"></span></h2>
 
 <br>
-<h4>consulter votre compte</h4>
-<form th:name="compte" th:action="@{|/getprofil/${utilisateur.emailUtilisateur}|}" method="get">
-    <input type="submit" value="Compte">
+<h4>se connecter</h4>
+<form th:name="compte" th:action="@{/getconnexion}" method="get">
+    <input type="submit" value="se connecter">
 </form>
 
 

@@ -31,6 +31,7 @@ public class UtilisateurController {
     private final SituationServices ss;
     private final CentreInteretServices cs;
     private final PhotoServices ps;
+
     @Autowired
     public UtilisateurController(UtilisateurServices us, AdresseServices as, ApparenceServices aps, SituationServices ss, CentreInteretServices cs, PhotoServices ps) {
         this.us = us;
@@ -42,20 +43,20 @@ public class UtilisateurController {
     }
 
     @PostMapping("/formulaire")
-    private String formulaire(@Valid @ModelAttribute(value="utilisateur") Utilisateur utilisateur, BindingResult resultUtilisateur,
-                                    @Valid @ModelAttribute(value="adresse") Adresse adresse, BindingResult resultAdresse,
-                                    @Valid @ModelAttribute(value="apparence") Apparence apparence, BindingResult resultApparence,
-                                    @Valid @ModelAttribute(value="centreInterets") CentreInteret centreInterets, BindingResult resultCentreInterets,
-                                    @Valid @ModelAttribute(value="situation")  Situation situation, BindingResult resultSituation,
-                                    @Valid @ModelAttribute(value="photo")  Photo photo, BindingResult resultPhoto,
-                                    ModelMap model
-                               ) {
+    private String formulaire(@Valid @ModelAttribute(value = "utilisateur") Utilisateur utilisateur, BindingResult resultUtilisateur,
+                              @Valid @ModelAttribute(value = "adresse") Adresse adresse, BindingResult resultAdresse,
+                              @Valid @ModelAttribute(value = "apparence") Apparence apparence, BindingResult resultApparence,
+                              @Valid @ModelAttribute(value = "centreInterets") CentreInteret centreInterets, BindingResult resultCentreInterets,
+                              @Valid @ModelAttribute(value = "situation") Situation situation, BindingResult resultSituation,
+                              @Valid @ModelAttribute(value = "photo") Photo photo, BindingResult resultPhoto,
+                              ModelMap model
+    ) {
 
         if (resultUtilisateur.hasErrors() || resultAdresse.hasErrors() ||
                 resultApparence.hasErrors() || resultCentreInterets.hasErrors() ||
-                resultSituation.hasErrors()||resultPhoto.hasErrors() ) {
+                resultSituation.hasErrors() || resultPhoto.hasErrors()) {
 
-            return  "inscription";
+            return "inscription";
         }
 
         utilisateur.setAdresse(adresse);
@@ -68,7 +69,7 @@ public class UtilisateurController {
         cs.create(centreInterets);
         ss.create(situation);
         us.create(utilisateur);
-     /*ps.create(photo);*/
+        /*ps.create(photo);*/
 
         return "profil";
 
@@ -83,86 +84,87 @@ public class UtilisateurController {
         model.addAttribute("apparence", new Apparence());
         model.addAttribute("centreInterets", new CentreInteret());
         model.addAttribute("situation", new Situation());
-     /*   model.addAttribute("photo", new Photo());*/
+        /*   model.addAttribute("photo", new Photo());*/
         return "inscription";
     }
 
     @RequestMapping(value = "/getprofil/{Email}", method = RequestMethod.GET)
-    public ModelAndView getProfil (@PathVariable String Email ){
+    public ModelAndView getProfil(@PathVariable String Email) {
         Utilisateur utilisateur = us.findUtilisateurByEmail(Email);
- ModelAndView model=new ModelAndView("profil");
+        ModelAndView model = new ModelAndView("profil");
         model.addObject("utilisateur", utilisateur);
         model.addObject("adresse", utilisateur.getAdresse());
         model.addObject("apparence", utilisateur.getApparence());
-       model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
+        model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
         model.addObject("situation", utilisateur.getSituation());
-
-
 
      /*   Adresse adresse= as.findById(1L);
         Apparence apparence = aps.findById(2L);
         CentreInteret centreInterets = cs.findById(3L);
         Situation situation=ss.findById(4L);
 
-
-
         session.setAttribute("utilisateur", utilisateur);
-
        session.setAttribute("adresse", adresse);
         session.setAttribute("apparence", apparence);
         session.setAttribute("centreInterets", centreInterets);
         session.setAttribute("situation", situation);*/
-
-
         return model;
     }
 
 
-
     @GetMapping("/getconnexion")
     public String getConexion() {
-
-        return "connexion";}
-
-
+        return "connexion";
+    }
 
 
     @RequestMapping(value = "/connexion", method = RequestMethod.POST)
-    private String connexion( @RequestParam("email") String email,@RequestParam ("motDePasse") String motDePasse, ModelMap model, HttpSession httpSession){
+    private String connexion(@RequestParam("email") String email, @RequestParam("motDePasse") String motDePasse, ModelMap model, HttpSession httpSession) {
 
         Utilisateur utilisateur = us.findUtilisateurByEmailUtilisateurEtMotDePasse(email, motDePasse);
-        if ( utilisateur == null) {
+        if (utilisateur == null) {
             String message = "identifiant ou mot de passe incorrect";
-
             model.addAttribute("message", message);
+
             return "connexion";
 
         }
 
-this.session(httpSession, utilisateur);
+        this.session(httpSession, utilisateur);
         String message = "Bienvenue sur votre session";
         model.addAttribute("message", message);
         model.addAttribute("utilisateur", utilisateur);
-
         return "login";
-
     }
 
 
-        public void session(HttpSession httpsession, Utilisateur utilisateur){
 
-            String  sessionKey="dating";
-            Object time= httpsession.getAttribute(sessionKey);
+    @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
+    private String deconnexion(ModelMap model, HttpSession httpSession) {
 
-            if (time==null){
-                time=LocalDateTime.now();
-                httpsession.setAttribute(sessionKey, time);
-            }
-            httpsession.setAttribute("EmailUtilisateur", utilisateur.getEmailUtilisateur());
-            httpsession.setAttribute("pseudo",utilisateur.getPseudo() );
-            httpsession.setMaxInactiveInterval(60*15);
+        String message = "Vous êtes deconnecté";
+        model.addAttribute("message", message);
+        httpSession.invalidate();
+        return "logout";
+    }
 
+
+
+
+    public void session(HttpSession httpsession, Utilisateur utilisateur) {
+
+        String sessionKey = "dating";
+        Object time = httpsession.getAttribute(sessionKey);
+
+        if (time == null) {
+            time = LocalDateTime.now();
+            httpsession.setAttribute(sessionKey, time);
         }
+        httpsession.setAttribute("EmailUtilisateur", utilisateur.getEmailUtilisateur());
+        httpsession.setAttribute("pseudo", utilisateur.getPseudo());
+        httpsession.setMaxInactiveInterval(60);
+
+    }
 
 
 }

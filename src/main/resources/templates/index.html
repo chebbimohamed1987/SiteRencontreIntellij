@@ -30,16 +30,18 @@
 </div>
 
 <div>
-
-
     <h2>Deconnexion</h2>
     <form th:name="deconnexion" th:action="@{/deconnexion}" method="get">
         <input type="submit" value="Se déconnecter">
     </form>
-
-
-
 </div>
+<div>
+    <h2>Liste utilisateurs</h2>
+    <form th:name="listeUtilisateurs" th:action="@{/getprofils}" method="get">
+        <input type="submit" value="Voir la liste ! ">
+    </form>
+</div>
+
 
 <!--<h1 th:text="#{hello}"></h1>-->
 </body>

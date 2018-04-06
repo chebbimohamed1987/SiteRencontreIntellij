@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Photo {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String lien;

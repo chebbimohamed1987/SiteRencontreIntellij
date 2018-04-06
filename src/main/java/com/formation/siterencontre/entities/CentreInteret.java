@@ -3,19 +3,22 @@ package com.formation.siterencontre.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
 public class CentreInteret {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     @NotBlank
+    @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Verifier ce champs")
     private String sport;
     @NotNull
     @NotBlank
+    @Pattern(regexp = "(?i)[a-z ]{2,50}", message = "Verifier ce champs")
     private String loisir;
 
 

@@ -14,6 +14,7 @@
 
     <!--###################################     UTILISATEUR    ###################################-->
     <p><strong>Utilisateur:</strong></p>
+
     <div>
         <label th:for="emailUtilisateur" th:text="#{utilisateur.emailUtilisateur}"></label> <input type="text" id="emailUtilisateur"  th:field="*{utilisateur.emailUtilisateur}">
         <span th:if="${#fields.hasErrors('utilisateur.emailUtilisateur')}" th:errors="*{utilisateur.emailUtilisateur}"></span><br>
@@ -67,6 +68,7 @@
         <label>Type rue :</label>
         <select name="typeRue" th:field="${adresse.typeRue}">
             
+
             <option th:each="type:${T(com.formation.siterencontre.enums.TypeRue).values()}" th:name="${type}" th:value="${type}" th:utext="${type}"/>
         </select><br>
 

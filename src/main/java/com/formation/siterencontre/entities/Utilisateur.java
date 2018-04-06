@@ -8,9 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +19,8 @@ public class Utilisateur {
     @Pattern(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
     @Column(length = 100)
     @NotNull
-
-
-
     private String emailUtilisateur;
+
 
     @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre nom")
    /* @NotNull
@@ -43,21 +39,24 @@ public class Utilisateur {
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
 
-    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit contenir au minimum un chiffre, une lettre majuscule, une lettre miniscule et un symbol")
     @Column(name = "MotDePasse" ,length=50)
     private String motDePasse;
 
     @Column(length = 250)
     private String description;
 
-    @Pattern(regexp = "(?i)[a-z]{2,50}", message = "Veuillez saisir votre prenom")
+    @Pattern(regexp = "(?i)[a-zA-Z0-9]{2,50}", message = "Veuillez saisir votre pseudo")
     private String pseudo;
 
     @Column(length = 100)
-    @Pattern(regexp = "^[a-z0-9_-]{3,15}$", message = "Veuillez saisir votre numero de telephone")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Veuillez saisir votre numero de telephone 0X XX XX XX XX")
     private String numeroTel;
 
     @Column(name= "admin", length = 100)
+    @Min(value=0, message = "utilisateur")
+    @Max(value=1, message = "admin")
+
     private Integer type;
 
     @ManyToOne
@@ -80,7 +79,6 @@ public class Utilisateur {
 
     @ManyToMany
 private List<CentreInteret> centreInterets;
-
 
     @ManyToMany
     private List<Utilisateur> favoris;

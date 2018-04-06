@@ -5,9 +5,7 @@ import com.formation.siterencontre.enums.Prefixe;
 import com.formation.siterencontre.enums.TypeRue;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +18,8 @@ public class Adresse {
 
 
     @Column (length = 5)
+    @Min(value=10000, message = "min 10000")
+    @Max(value=99999, message = "max 99999")
     private Integer codePostal;
 
     @Column (length = 100)

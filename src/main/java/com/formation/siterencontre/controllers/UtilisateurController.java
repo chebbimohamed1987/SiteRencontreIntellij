@@ -1,25 +1,18 @@
 package com.formation.siterencontre.controllers;
 
 import com.formation.siterencontre.entities.*;
-import com.formation.siterencontre.enums.Alcool;
 import com.formation.siterencontre.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
-
-import org.springframework.web.bind.annotation.*;
-
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
 @Controller
@@ -98,16 +91,21 @@ public class UtilisateurController {
         model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
         model.addObject("situation", utilisateur.getSituation());
 
-     /*   Adresse adresse= as.findById(1L);
-        Apparence apparence = aps.findById(2L);
-        CentreInteret centreInterets = cs.findById(3L);
-        Situation situation=ss.findById(4L);
+        return model;
+    }
 
-        session.setAttribute("utilisateur", utilisateur);
-       session.setAttribute("adresse", adresse);
-        session.setAttribute("apparence", apparence);
-        session.setAttribute("centreInterets", centreInterets);
-        session.setAttribute("situation", situation);*/
+
+
+    @RequestMapping(value = "/getprofils", method = RequestMethod.GET)
+    public ModelAndView getProfils() {
+        ArrayList<Utilisateur> utilisateurs = us.getAllUtilisateur();
+        ModelAndView model = new ModelAndView("profils");
+        model.addObject("utilisateurs", utilisateurs);
+  /*      model.addObject("adresse", utilisateur.getAdresse());
+        model.addObject("apparence", utilisateur.getApparence());
+        model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
+        model.addObject("situation", utilisateur.getSituation());*/
+
         return model;
     }
 
@@ -162,7 +160,7 @@ public class UtilisateurController {
         }
         httpsession.setAttribute("EmailUtilisateur", utilisateur.getEmailUtilisateur());
         httpsession.setAttribute("pseudo", utilisateur.getPseudo());
-        httpsession.setMaxInactiveInterval(60);
+        httpsession.setMaxInactiveInterval(30);
 
     }
 

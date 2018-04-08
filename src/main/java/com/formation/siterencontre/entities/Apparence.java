@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class Apparence {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
     @DecimalMin(value="60", message="le poids doit etre superieur a 60")

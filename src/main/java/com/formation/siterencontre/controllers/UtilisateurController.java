@@ -164,5 +164,31 @@ public class UtilisateurController {
 
     }
 
+    @RequestMapping(value = "/forgettenPassword", method = RequestMethod.GET)
+    private String forgettenPassword() {
+
+            return "forgettenPassword";
+
+        }
+
+    @RequestMapping(value = "/forgettenPassword", method = RequestMethod.POST)
+    private String forgettenPassword2(@RequestParam("email") String email, ModelMap model) {
+
+        Utilisateur utilisateur = us.findUtilisateurByEmail(email);
+        if (utilisateur == null) {
+            String message = "identifiant inexistant";
+            model.addAttribute("message", message);
+
+            return "forgettenPassword";
+
+        }
+return null;
+   /*     this.session(httpSession, utilisateur);
+        String message = "Bienvenue sur votre session";
+        model.addAttribute("message", message);
+        model.addAttribute("utilisateur", utilisateur);
+        return "login";*/
+    }
+
 
 }

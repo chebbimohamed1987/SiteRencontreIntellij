@@ -5,12 +5,15 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 <style>
-    td,table{
+    td{
         border: 1px solid #5268ff;
-        width: 200px;
+        width: 300px;
         height: 50px;
         text-align:left;
         vertical-align: top;
+    }
+    table{
+        border: 1px solid #5268ff;
     }
 
 
@@ -21,7 +24,6 @@
 
     <h2>Profils</h2>
     <!--###################################     UTILISATEUR    ###################################-->
-
 
     <table>
 
@@ -44,26 +46,19 @@
             </td>
         </tr>
     <th:block th:each="utilisateur,iter : ${utilisateurs}">
-
     <tr>
         <td>
-            <p><Strong>Utilisateur</Strong> <strong th:text="${iter.index}">:</strong></p>
-      <!--  <label th:text="#{utilisateur.emailUtilisateur}"></label> <output type="text" id="emailUtilisateur"  th:text="${utilisateur.emailUtilisateur}"/>-->
-           <!-- <a th:href=@{"localhost:8080/getprofil/mohamed.chebbi@cpe.fr}"> test  </a>-->
+            <label> <strong th:text="'Utilisateur ' + ${iter.index+1} + ' '"/></label>
 
-
-
-
-        <br><label>Sexe:</label>   <output type="radio" id="${type}" th:name="sexe"th:text="${utilisateur.sexe}" />
-
-        <br><label>Nom:</label> <output type="text" id="nom" th:text="${utilisateur.nom}"/>
-
+            <br><label>Nom:</label> <output type="text" id="nom" th:text="${utilisateur.nom}"/>
         <br><label for="prenom">Prenom:</label> <output type="text" id="prenom" th:text="${utilisateur.prenom}"/>
 
 
         <br><label for="pseudo">Pseudo:</label> <output type="text" id="pseudo" th:text="${utilisateur.pseudo}"/>
 
-        <br><label>Date de naissance:</label> <output type="date" id="dateDeNaissance" th:text="${utilisateur.dateDeNaissance}"/>
+           <br> <label>Sexe:</label>   <output type="radio" id="${type}" th:name="sexe"th:text="${utilisateur.sexe}" />
+
+            <br><label>Date de naissance:</label> <output type="date" id="dateDeNaissance" th:text="${utilisateur.dateDeNaissance}"/>
 
         <br><label>Telephone: </label> <output type="text" id="numeroTel" th:text="${utilisateur.numeroTel}"/>
 
@@ -75,8 +70,7 @@
 
 
         <td>
-
-        <br><label>Code Postal :</label> <output type="number" id="codePostal" th:text="${utilisateur.adresse.codePostal}"/>
+            <label>Code Postal :</label> <output type="number" id="codePostal" th:text="${utilisateur.adresse.codePostal}"/>
 
         <br><label>Ville :</label> <output type="text" id="ville" th:text="${utilisateur.adresse.ville}"/>
         </td>
@@ -127,7 +121,13 @@
 
 
         <br><label>Orientation :</label>
-        <output name="loisir" th:text="${utilisateur.situation.orientation}" />
+        <output name="loisir" th:text="${utilisateur.situation.orientation}" /><br>
+
+            <form th:action="@{/getprofil/}+${utilisateur.EmailUtilisateur}">
+                <input type="submit" value="En savoir plus">
+
+
+            </form>
 
         </td>
     </tr>

@@ -10,4 +10,5 @@ public interface UtilisateurRepository extends JpaRepository <Utilisateur, Strin
 
     Utilisateur findUtilisateurByEmailUtilisateurAndMotDePasse(String EmailUtilisateur, String motDePasse)  ;
     Utilisateur findUtilisateurByEmailUtilisateur(String EmailUtilisateur);
+
 }

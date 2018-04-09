@@ -1,6 +1,7 @@
 package com.formation.siterencontre.controllers;
 
 import com.formation.siterencontre.entities.*;
+import com.formation.siterencontre.enums.Fumeur;
 import com.formation.siterencontre.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ public class UtilisateurController {
     private final PhotoServices ps;
 
     @Autowired
+
+
     public UtilisateurController(UtilisateurServices us, AdresseServices as, ApparenceServices aps, SituationServices ss, CentreInteretServices cs, PhotoServices ps) {
         this.us = us;
         this.as = as;
@@ -77,6 +80,7 @@ public class UtilisateurController {
         model.addAttribute("apparence", new Apparence());
         model.addAttribute("centreInterets", new CentreInteret());
         model.addAttribute("situation", new Situation());
+        model.addAttribute("fumeur", Fumeur.values());
         /*   model.addAttribute("photo", new Photo());*/
         return "inscription";
     }
@@ -90,6 +94,7 @@ public class UtilisateurController {
         model.addObject("apparence", utilisateur.getApparence());
         model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
         model.addObject("situation", utilisateur.getSituation());
+        model.addObject("fumeur", Fumeur.values());
 
         return model;
     }

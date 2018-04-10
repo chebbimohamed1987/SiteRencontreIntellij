@@ -106,10 +106,6 @@ public class UtilisateurController {
         ArrayList<Utilisateur> utilisateurs = us.getAllUtilisateur();
         ModelAndView model = new ModelAndView("profils");
         model.addObject("utilisateurs", utilisateurs);
-  /*      model.addObject("adresse", utilisateur.getAdresse());
-        model.addObject("apparence", utilisateur.getApparence());
-        model.addObject("centreInterets", (utilisateur.getCentreInterets().get(0)));
-        model.addObject("situation", utilisateur.getSituation());*/
 
         return model;
     }

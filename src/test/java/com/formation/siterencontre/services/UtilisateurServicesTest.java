@@ -19,9 +19,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UtilisateurServicesTest {
 
     @Before
-    public void init() throws Exception {
+    public Utilisateur init() throws Exception {
 
-        Utilisateur user = new Utilisateur("mohamed.chebbi@cpe.fr", "chebbi", "mohamed", "2018-04-10", Sexe.F, "sdfsfsdfdsD544+", "hellotoutlemonde", "mohamed0845", "0615847521", 0);
+       return  new Utilisateur("mohamed.chebbi@cpe.fr", "chebbi", "mohamed", "2018-04-10", Sexe.F, "sdfsfsdfdsD544+", "hellotoutlemonde", "mohamed0845", "0615847521", 0);
 
     }
 

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
 
-    <br>
-<br><h2><span th:text="${message != null} ? ${message} : ''"></span></h2>
+	<br>
+	<br>
+	<h2>
+		<span th:text="${message != null} ? ${message} : ''"></span>
+	</h2>
 
-<br>
-<h4>se connecter</h4>
-<form th:name="compte" th:action="@{/getconnexion}" method="get">
-    <input type="submit" value="se connecter">
-</form>
+	<br>
+	<h4>se connecter</h4>
+	<form th:name="compte" th:action="@{/getconnexion}" method="get">
+		<input type="submit" value="se connecter">
+	</form>
 
 
 
 
-<!--<h1 th:text="#{hello}"></h1>-->
+	<!--<h1 th:text="#{hello}"></h1>-->
 </body>
 </html>

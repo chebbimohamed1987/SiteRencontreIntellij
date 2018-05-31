@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 </head>
 <body>
-<p><strong>Compléter votre profil:</strong></p>
-<!--###################################     PHOTO    ###################################-->
-<div>
-    <label>Photo de profil: </label>
-    <input type="file" th:field="*{photo.lien}" >
-    <span th:if="${#fields.hasErrors('photo.lien')}" th:errors="*{photo.lien}"></span>
-    <br>
+	<p>
+		<strong>Compléter votre profil:</strong>
+	</p>
+	<!--###################################     PHOTO    ###################################-->
+	<div>
+		<label>Photo de profil: </label> <input type="file"
+			th:field="*{photo.lien}"> <span
+			th:if="${#fields.hasErrors('photo.lien')}" th:errors="*{photo.lien}"></span>
+		<br>
 
-</div>
+	</div>
 
-<!--###################################     MULTIMEDIA    ###################################-->
-<p><strong>Film:</strong></p>
-<div>
-    <label>Titre :</label> <input type="text" id="titre" th:field="*{multimedia.titre}"><br>
-    <p th:if="${#fields.hasErrors('multimedia.titre')}" th:errors="*{multimedia.titre}"></p><br>
+	<!--###################################     MULTIMEDIA    ###################################-->
+	<p>
+		<strong>Film:</strong>
+	</p>
+	<div>
+		<label>Titre :</label> <input type="text" id="titre"
+			th:field="*{multimedia.titre}"><br>
+		<p th:if="${#fields.hasErrors('multimedia.titre')}"
+			th:errors="*{multimedia.titre}"></p>
+		<br> <label>Genre :</label> <select name="genre"
+			th:field="${multimedia.genre}">
+			<option th:value="" selected />
+			<option
+				th:each="type : ${T(com.formation.siterencontre.entities.Genre).values()}"
+				th:name="${type}" th:value="${type}" th:utext="${type}" />
+		</select><br> <label>Artiste :</label> <input type="text" id="artiste"
+			th:field="*{multimedia.artiste}"><br>
+		<p th:if="${#fields.hasErrors('multimedia.artiste')}"
+			th:errors="*{multimedia.artiste}"></p>
+		<br>
 
-    <label>Genre :</label>
-    <select name="genre" th:field="${multimedia.genre}">
-        <option th:value="" selected/>
-        <option th:each="type : ${T(com.formation.siterencontre.entities.Genre).values()}" th:name="${type}" th:value="${type}" th:utext="${type}"/>
-    </select><br>
-
-    <label>Artiste :</label> <input type="text" id="artiste" th:field="*{multimedia.artiste}"><br>
-    <p th:if="${#fields.hasErrors('multimedia.artiste')}" th:errors="*{multimedia.artiste}"></p><br>
-
-</div>
+	</div>
 
 
 </body>

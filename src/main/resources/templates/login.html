@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
-<output th:text="${utilisateur.pseudo}"></output>
+	<output th:text="${utilisateur.pseudo}"></output>
 
-    <br>
-<br><h2><span th:text="${message != null} ? ${message} : ''"></span></h2>
+	<br>
+	<br>
+	<h2>
+		<span th:text="${message != null} ? ${message} : ''"></span>
+	</h2>
 
-<br>
-<h4>consulter votre compte</h4>
-<form th:name="compte" th:action="@{|/getprofil/${utilisateur.emailUtilisateur}|}" method="get">
-    <input type="submit" value="Compte">
-</form>
+	<br>
+	<h4>consulter votre compte</h4>
+	<form th:name="compte"
+		th:action="@{|/getprofil/${utilisateur.emailUtilisateur}|}"
+		method="get">
+		<input type="submit" value="Compte">
+	</form>
 
 
 
 
-<!--<h1 th:text="#{hello}"></h1>-->
+	<!--<h1 th:text="#{hello}"></h1>-->
 </body>
 </html>

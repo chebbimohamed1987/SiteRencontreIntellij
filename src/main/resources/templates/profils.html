@@ -1,138 +1,131 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+<meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 <style>
-    td{
-        border: 1px solid #5268ff;
-        width: 300px;
-        height: 50px;
-        text-align:left;
-        vertical-align: top;
-    }
-    table{
-        border: 1px solid #5268ff;
-    }
+td {
+	border: 1px solid #5268ff;
+	width: 300px;
+	height: 50px;
+	text-align: left;
+	vertical-align: top;
+}
 
-
+table {
+	border: 1px solid #5268ff;
+}
 </style>
 </head>
 <body>
 
 
-    <h2>Profils</h2>
-    <!--###################################     UTILISATEUR    ###################################-->
+	<h2>Profils</h2>
+	<!--###################################     UTILISATEUR    ###################################-->
 
-    <table>
+	<table>
 
-        <tr>
-            <td>
-                <p><Strong>Utilisateur</Strong> </p>
-            </td>
-            <td>
-                <p><strong>Adresse:</strong></p>
-            </td>
+		<tr>
+			<td>
+				<p>
+					<Strong>Utilisateur</Strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Adresse:</strong>
+				</p>
+			</td>
 
-            <td>
-                <p><strong>Apparence:</strong></p>
-            </td>
-            <td>
-                <p><strong>Centre d'interets:</strong></p>
-            </td>
-            <td>
-                <p><strong>Situation:</strong></p>
-            </td>
-        </tr>
-    <th:block th:each="utilisateur,iter : ${utilisateurs}">
-    <tr>
-        <td>
-            <label> <strong th:text="'Utilisateur ' + ${iter.index+1} + ' '"/></label>
-
-            <br><label>Nom:</label> <output type="text" id="nom" th:text="${utilisateur.nom}"/>
-        <br><label for="prenom">Prenom:</label> <output type="text" id="prenom" th:text="${utilisateur.prenom}"/>
-
-
-        <br><label for="pseudo">Pseudo:</label> <output type="text" id="pseudo" th:text="${utilisateur.pseudo}"/>
-
-           <br> <label>Sexe:</label>   <output type="radio" id="${type}" th:name="sexe"th:text="${utilisateur.sexe}" />
-
-            <br><label>Date de naissance:</label> <output type="date" id="dateDeNaissance" th:text="${utilisateur.dateDeNaissance}"/>
-
-        <br><label>Telephone: </label> <output type="text" id="numeroTel" th:text="${utilisateur.numeroTel}"/>
-
-
-        <br><label>Description :</label> <output type="text" id="description" th:text="${utilisateur.description}"/>
-
-    </td>
-    <!--###################################     ADRESSE    ###################################-->
-
-
-        <td>
-            <label>Code Postal :</label> <output type="number" id="codePostal" th:text="${utilisateur.adresse.codePostal}"/>
-
-        <br><label>Ville :</label> <output type="text" id="ville" th:text="${utilisateur.adresse.ville}"/>
-        </td>
-    <!--&lt;!&ndash;###################################     APPARENCE    ###################################&ndash;&gt;-->
-
-        <td>
-        <label>Masse :</label> <output type="number" id="masse" th:text="${utilisateur.apparence.masse}"/>
-
-        <br><label>Taille :</label> <output type="number" id="taille" th:text="${utilisateur.apparence.taille}"/>
-
-        <br><label>Couleur yeux :</label>
-        <output name="couleurYeux" th:text="${utilisateur.apparence.couleurYeux}"/>
+			<td>
+				<p>
+					<strong>Apparence:</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Centre d'interets:</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Situation:</strong>
+				</p>
+			</td>
+		</tr>
+		<th:block th:each="utilisateur,iter : ${utilisateurs}">
+			<tr>
+				<td><label> <strong
+						th:text="'Utilisateur ' + ${iter.index+1} + ' '" /></label> <br>
+				<label>Nom:</label> <output type="text" id="nom"
+						th:text="${utilisateur.nom}" /> <br>
+				<label for="prenom">Prenom:</label> <output type="text" id="prenom"
+						th:text="${utilisateur.prenom}" /> <br>
+				<label for="pseudo">Pseudo:</label> <output type="text" id="pseudo"
+						th:text="${utilisateur.pseudo}" /> <br> <label>Sexe:</label>
+					<output type="radio" id="${type}" th:name="sexe"
+						th:text="${utilisateur.sexe}" /> <br>
+				<label>Date de naissance:</label> <output type="date"
+						id="dateDeNaissance" th:text="${utilisateur.dateDeNaissance}" /> <br>
+				<label>Telephone: </label> <output type="text" id="numeroTel"
+						th:text="${utilisateur.numeroTel}" /> <br>
+				<label>Description :</label> <output type="text" id="description"
+						th:text="${utilisateur.description}" /></td>
+				<!--###################################     ADRESSE    ###################################-->
 
 
-        <br><label>Couleur cheveux :</label>
-        <output name="couleurCheveux" th:text="${utilisateur.apparence.couleurCheveux}"/>
+				<td><label>Code Postal :</label> <output type="number"
+						id="codePostal" th:text="${utilisateur.adresse.codePostal}" /> <br>
+				<label>Ville :</label> <output type="text" id="ville"
+						th:text="${utilisateur.adresse.ville}" /></td>
+				<!--&lt;!&ndash;###################################     APPARENCE    ###################################&ndash;&gt;-->
 
-        <br><label>Type cheveux :</label> <output name="typeCheveux" th:text="${utilisateur.apparence.typeCheveux}"/>
+				<td><label>Masse :</label> <output type="number" id="masse"
+						th:text="${utilisateur.apparence.masse}" /> <br>
+				<label>Taille :</label> <output type="number" id="taille"
+						th:text="${utilisateur.apparence.taille}" /> <br>
+				<label>Couleur yeux :</label> <output name="couleurYeux"
+						th:text="${utilisateur.apparence.couleurYeux}" /> <br>
+				<label>Couleur cheveux :</label> <output name="couleurCheveux"
+						th:text="${utilisateur.apparence.couleurCheveux}" /> <br>
+				<label>Type cheveux :</label> <output name="typeCheveux"
+						th:text="${utilisateur.apparence.typeCheveux}" /> <br>
+				<label>Origine :</label> <output type="text" id="origine"
+						th:text="${utilisateur.apparence.origine}" /><br></td>
+				<!--&lt;!&ndash;###################################     CENTRE D INTERETS    ###################################&ndash;&gt;-->
+				<td><label>Sport :</label> <output type="text" id="sport"
+						th:text="${utilisateur.getCentreInterets().get(0).sport}" /> <br>
+				<label>Loisir :</label>
+				<output type="text" id="loisir"
+						th:text="${utilisateur.getCentreInterets().get(0).loisir}" /></td>
 
-        <br><label>Origine :</label> <output type="text" id="origine" th:text="${utilisateur.apparence.origine}"/><br>
-
-        </td>
-    <!--&lt;!&ndash;###################################     CENTRE D INTERETS    ###################################&ndash;&gt;-->
-    <td>
-        <label>Sport :</label> <output type="text" id="sport" th:text="${utilisateur.getCentreInterets().get(0).sport}"/>
-
-
-        <br><label>Loisir :</label><output type="text" id="loisir" th:text="${utilisateur.getCentreInterets().get(0).loisir}"/>
-
-    </td>
-
-    <!--&lt;!&ndash;###################################     SITUATION    ###################################&ndash;&gt;-->
-
-
-        <td>
-        <label>Statut personnel :</label> <output type="text" id="statutPerso" th:text="${utilisateur.situation.statutPerso}"/>
-
-        <br><label>Statut professionnel :</label> <output type="text" id="statutPro" th:text="${utilisateur.situation.statutPro}"/>
-
-
-        <br><label>Nombre d'enfants :</label> <output type="number" id="nbrEnfant" th:text="${utilisateur.situation.nbrEnfant}"/>
-
-        <br><label>Fumeur :</label>
-        <output name="fumeur" th:text="${utilisateur.situation.fumeur}" />
-
-        <br><label>Alcool :</label>
-        <output name="loisir" th:text="${utilisateur.situation.alcool}" />
+				<!--&lt;!&ndash;###################################     SITUATION    ###################################&ndash;&gt;-->
 
 
-        <br><label>Orientation :</label>
-        <output name="loisir" th:text="${utilisateur.situation.orientation}" /><br>
+				<td><label>Statut personnel :</label> <output type="text"
+						id="statutPerso" th:text="${utilisateur.situation.statutPerso}" />
 
-            <form th:action="@{/getprofil/}+${utilisateur.EmailUtilisateur}">
-                <input type="submit" value="En savoir plus">
+					<br>
+				<label>Statut professionnel :</label> <output type="text"
+						id="statutPro" th:text="${utilisateur.situation.statutPro}" /> <br>
+				<label>Nombre d'enfants :</label> <output type="number"
+						id="nbrEnfant" th:text="${utilisateur.situation.nbrEnfant}" /> <br>
+				<label>Fumeur :</label> <output name="fumeur"
+						th:text="${utilisateur.situation.fumeur}" /> <br>
+				<label>Alcool :</label> <output name="loisir"
+						th:text="${utilisateur.situation.alcool}" /> <br>
+				<label>Orientation :</label> <output name="loisir"
+						th:text="${utilisateur.situation.orientation}" /><br>
+
+					<form th:action="@{/getprofil/}+${utilisateur.EmailUtilisateur}">
+						<input type="submit" value="En savoir plus">
 
 
-            </form>
+					</form></td>
+			</tr>
 
-        </td>
-    </tr>
-
-    </th:block>
-    </table>
+		</th:block>
+	</table>
 </body>
 </html>

@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
 </head>
 <body>
-<div>
+	<div>
 
-    <h2>Inscription</h2>
-    <form th:name="inscription" th:action="@{/getformulaire}" method="get">
-      <input type="submit" value="S'inscrire">
-    </form>
+		<h2>Inscription</h2>
+		<form th:name="inscription" th:action="@{/getformulaire}" method="get">
+			<input type="submit" value="S'inscrire">
+		</form>
 
-</div>
-<div>
-
-
-    <h2>Connexion</h2>
-    <form th:name="connexion" th:action="@{/getconnexion}" method="get">
-        <input type="submit" value="Se connecter">
-    </form>
-
-    <a th:href="@{/forgettenPassword}"><p>Mot de passe oublié</p></a>
+	</div>
+	<div>
 
 
-</div>
+		<h2>Connexion</h2>
+		<form th:name="connexion" th:action="@{/getconnexion}" method="get">
+			<input type="submit" value="Se connecter">
+		</form>
 
-<div>
-    <h2>Deconnexion</h2>
-    <form th:name="deconnexion" th:action="@{/deconnexion}" method="get">
-        <input type="submit" value="Se déconnecter">
-    </form>
-</div>
-<div>
-    <h2>Liste utilisateurs</h2>
-    <form th:name="listeUtilisateurs" th:action="@{/getprofils}" method="get">
-        <input type="submit" value="Voir la liste ! ">
-    </form>
-</div>
+		<a th:href="@{/forgettenPassword}"><p>Mot de passe oublié</p></a>
 
 
-<!--<h1 th:text="#{hello}"></h1>-->
+	</div>
+
+	<div>
+		<h2>Deconnexion</h2>
+		<form th:name="deconnexion" th:action="@{/deconnexion}" method="get">
+			<input type="submit" value="Se déconnecter">
+		</form>
+	</div>
+	<div>
+		<h2>Liste utilisateurs</h2>
+		<form th:name="listeUtilisateurs" th:action="@{/getprofils}"
+			method="get">
+			<input type="submit" value="Voir la liste ! ">
+		</form>
+	</div>
+
+
+	<!--<h1 th:text="#{hello}"></h1>-->
 </body>
 </html>

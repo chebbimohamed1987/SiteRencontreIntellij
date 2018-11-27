@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 public class Adresse {
+	//ceci est un deuxiem test de master rebase
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
